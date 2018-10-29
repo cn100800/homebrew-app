@@ -2,10 +2,10 @@
 #                https://www.rubydoc.info/github/Homebrew/brew/master/Formula
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 class News < Formula
-  desc "2018.10.29.release"
+  desc "2018.10.30.release"
   homepage "https://github.com/cn100800/new/releases/latest"
-  url "https://github.com/cn100800/news/releases/download/2018.10.29.release/2018.10.29.release.tar.gz"
-  sha256 "58fa57e7e9f82aa7452da64cda8bc34ff1e7a61c4127ee3dd3799b57cae6388f"
+  url "https://github.com/cn100800/news/releases/download/2018.10.30.release/2018.10.30.release.tar.gz"
+  sha256 "921c4c9de1abfd4db315792d53dacc68d779fa1369109397eb3c696f6a0c4e99"
   # depends_on "cmake" => :build
 
   def install
