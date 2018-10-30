@@ -44,5 +44,5 @@ case $1 in
     start  )  start $2 ;;
     stop   )  stop  $2 ;;
     restart)  restart $2 ;;
-    *) printf -- "Usage: $0 {start|stop|restart|status}" ;;
+    *) printf -- "Usage: $0 {start|stop|restart|status}\n" ;;
 esac
