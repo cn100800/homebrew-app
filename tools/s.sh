@@ -20,11 +20,11 @@ start(){
 }
 
 stop(){
-    pid=$(ps -aux | grep -v grep | grep "$cmd")
+    pid=$(ps -aux | grep -v grep | grep "$cmd" | awk '{printf $2}')
     if [[ $? -ne 0 ]]; then
         printf -- "pid faild"
     fi
-    kill -9 pid
+    kill -9 $pid
     if [[ $? -ne 0 ]]; then
         printf -- "kill faild"
     fi
