@@ -14,7 +14,7 @@ list(){
 start(){
     echo "$cmd" | grep "start" >/dev/null 2>&1
     if [[ $? -eq 0 ]]; then
-        $cmd
+        eval $cmd
         if [[ $? -ne 0 ]]; then
             printf -- "faild"
         fi
@@ -30,7 +30,7 @@ start(){
 stop(){
     echo "$cmd" | grep "start" >/dev/null 2>&1
     if [[ $? -eq 0 ]]; then
-        ${cmd//start/stop}
+        eval ${cmd//start/stop}
         if [[ $? -ne 0 ]]; then
             printf -- "stop faild. cmd is ${cmd//start/stop}"
         fi
@@ -50,7 +50,7 @@ stop(){
 restart(){
     echo "$cmd" | grep "start" >/dev/null 2>&1
     if [[ $? -eq 0 ]]; then
-        ${cmd//start/restart}
+        eval ${cmd//start/restart}
         if [[ $? -ne 0 ]]; then
             printf -- "restart faild . cmd is ${cmd//start/restart}"
         fi
