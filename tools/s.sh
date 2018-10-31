@@ -12,6 +12,14 @@ list(){
 }
 
 start(){
+    echo "$cmd" | grep "start" >/dev/null 2>&1
+    if [[ $? -eq 0 ]]; then
+        $cmd
+        if [[ $? -ne 0 ]]; then
+            printf -- "faild"
+        fi
+        return 0
+    fi
     nohup $cmd >/dev/null 2>&1 &
     if [[ $? -ne 0 ]]; then
         printf -- "faild"
@@ -20,6 +28,14 @@ start(){
 }
 
 stop(){
+    echo "$cmd" | grep "start" >/dev/null 2>&1
+    if [[ $? -eq 0 ]]; then
+        ${cmd//start/stop}
+        if [[ $? -ne 0 ]]; then
+            printf -- "stop faild. cmd is ${cmd//start/stop}"
+        fi
+        return 0
+    fi
     pid=$(ps -aux | grep -v grep | grep "$cmd" | awk '{printf $2}')
     if [[ $? -ne 0 ]]; then
         printf -- "pid faild"
@@ -32,6 +48,14 @@ stop(){
 }
 
 restart(){
+    echo "$cmd" | grep "start" >/dev/null 2>&1
+    if [[ $? -eq 0 ]]; then
+        ${cmd//start/restart}
+        if [[ $? -ne 0 ]]; then
+            printf -- "restart faild . cmd is ${cmd//start/restart}"
+        fi
+        return 0
+    fi
     stop && start
 }
 
