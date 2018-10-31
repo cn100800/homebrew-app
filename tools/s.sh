@@ -4,77 +4,69 @@ CONF_DIR=$HOME/.service/
 
 CONF_FILE=$CONF_DIR/service.conf
 
-mkdir -p $CONF_DIR
+mkdir -p "$CONF_DIR"
 
-if [ ! -f $CONF_FILE ]; then
-    touch $CONF_FILE
+if [ ! -f "$CONF_FILE" ]; then
+    touch "$CONF_FILE"
 fi
 
 if [[ $2 != "" ]]; then
-    cmd=$(cat $CONF_FILE | awk -v line=$2 -F":" 'NR==line{printf $2}')
-    server_name=$(cat $CONF_FILE | awk -v line=$2 -F":" 'NR==line{printf $1}')
+    cmd=$(awk -v line="$2" -F":" 'NR==line{printf $2}' < "$CONF_FILE")
+    server_name=$(awk -v line="$2" -F":" 'NR==line{printf $1}' < "$CONF_FILE")
 fi
 
 list(){
-    cat $CONF_FILE | grep -nv "^#"
+    grep -nv "^#" < "$CONF_FILE"
 }
 
 start(){
-    echo "$cmd" | grep "start" >/dev/null 2>&1
-    if [[ $? -eq 0 ]]; then
-        eval $cmd
-        if [[ $? -ne 0 ]]; then
+    if echo "$cmd" | grep "start" >/dev/null 2>&1 ; then
+        if eval "$cmd" ; then
             printf -- "faild"
         fi
         return 0
     fi
-    nohup $cmd >/dev/null 2>&1 &
-    if [[ $? -ne 0 ]]; then
+
+    if nohup "$cmd" >/dev/null 2>&1 & then
         printf -- "faild"
     fi
     return 0
 }
 
 stop(){
-    echo "$cmd" | grep "start" >/dev/null 2>&1
-    if [[ $? -eq 0 ]]; then
-        eval ${cmd//start/stop}
-        if [[ $? -ne 0 ]]; then
-            printf -- "stop faild. cmd is ${cmd//start/stop}"
+    if echo "$cmd" | grep "start" >/dev/null 2>&1 ; then
+        if eval "${cmd//start/stop}" ; then
+            printf -- "stop faild. cmd is %s" "${cmd//start/stop}"
         fi
         return 0
     fi
-    pid=$(ps -xc | grep $server_name | awk '{printf $1}')
-    if [[ $? -ne 0 ]]; then
+
+    if pid=$(pgrep "$server_name" | awk '{printf $1}') ; then
         printf -- "pid faild"
     fi
-    kill -9 $pid
-    if [[ $? -ne 0 ]]; then
+    if kill -9 "$pid" ; then
         printf -- "kill faild"
     fi
     return 0
 }
 
+status(){
+    pgrep "$server_name"
+}
+
 restart(){
-    echo "$cmd" | grep "start" >/dev/null 2>&1
-    if [[ $? -eq 0 ]]; then
-        eval ${cmd//start/restart}
-        if [[ $? -ne 0 ]]; then
-            printf -- "restart faild . cmd is ${cmd//start/restart}"
+    if echo "$cmd" | grep "start" >/dev/null 2>&1 ; then
+        if eval "${cmd//start/restart}" ; then
+            printf -- "restart faild . cmd is %s" "${cmd//start/restart}"
         fi
         return 0
     fi
 
-    if [[ stauts -eq 0 ]]; then
+    if pgrep "$server_name" ; then
         stop
     fi
     start
 }
-
-status(){
-    ps -xc | grep $server_name
-}
-
 
 case $1 in
     list   )  list  ;;
@@ -82,5 +74,5 @@ case $1 in
     stop   )  stop  ;;
     restart)  restart ;;
     status )  status ;;
-    *) printf -- "Usage: $0 {start|stop|restart|status}\n" ;;
+    *) printf -- "Usage: %s {start|stop|restart|status}\\n" "$0" ;;
 esac

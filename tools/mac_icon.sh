@@ -13,12 +13,12 @@ end () {
 
 icon () {
     for (( i = 4; i < 10; i++ )); do
-        let "v=2**$i"
-        vv=$[$v*2]
-        sips -z $v $v $src_file --out /tmp/icons.iconset/icon_${v}x${v}.png
-        sips -z $vv $vv $src_file --out /tmp/icons.iconset/icon_${v}x${v}@2x.png
+        ((v=2**i))
+        vv=$((v*2))
+        sips -z $v $v "$src_file" --out /tmp/icons.iconset/icon_${v}x${v}.png
+        sips -z $vv $vv "$src_file" --out /tmp/icons.iconset/icon_${v}x${v}@2x.png
     done
-    iconutil -c icns /tmp/icons.iconset -o $dst_file
+    iconutil -c icns /tmp/icons.iconset -o "$dst_file"
 }
 
 main () {
