@@ -1,10 +1,18 @@
 #!/bin/bash
 
 CONF_DIR=$HOME/.service/
+
 CONF_FILE=$CONF_DIR/service.conf
+
 mkdir -p $CONF_DIR
+
 if [ ! -f $CONF_FILE ]; then
     touch $CONF_FILE
+fi
+
+if [[ $2 != "" ]]; then
+    cmd=$(cat $CONF_FILE | awk -v line=$2 -F":" 'NR==line{printf $2}')
+    server_name=$(cat $CONF_FILE | awk -v line=$2 -F":" 'NR==line{printf $1}')
 fi
 
 list(){
@@ -36,7 +44,7 @@ stop(){
         fi
         return 0
     fi
-    pid=$(ps -aux | grep -v grep | grep "$cmd" | awk '{printf $2}')
+    pid=$(ps -xc | grep $server_name | awk '{printf $1}')
     if [[ $? -ne 0 ]]; then
         printf -- "pid faild"
     fi
@@ -56,16 +64,17 @@ restart(){
         fi
         return 0
     fi
-    stop && start
+
+    if [[ stauts -eq 0 ]]; then
+        stop
+    fi
+    start
 }
 
 status(){
-    ps -aux | grep -v grep | grep "$cmd"
+    ps -aux | grep $server_name
 }
 
-if [[ $2 != "" ]]; then
-    cmd=$(cat $CONF_FILE | awk -v line=$2 -F":" 'NR==line{printf $0}')
-fi
 
 case $1 in
     list   )  list  ;;
