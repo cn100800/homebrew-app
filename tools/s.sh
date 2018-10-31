@@ -45,9 +45,9 @@ fi
 
 case $1 in
     list   )  list  ;;
-    start  )  start $2 ;;
-    stop   )  stop  $2 ;;
-    restart)  restart $2 ;;
-    status )  status $2 ;;
+    start  )  start ;;
+    stop   )  stop  ;;
+    restart)  restart ;;
+    status )  status ;;
     *) printf -- "Usage: $0 {start|stop|restart|status}\n" ;;
 esac
