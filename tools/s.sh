@@ -35,6 +35,10 @@ restart(){
     stop && start
 }
 
+status(){
+    ps -aux | grep -v grep | grep "$cmd"
+}
+
 if [[ $2 != "" ]]; then
     cmd=$(cat $CONF_FILE | awk -v line=$2 -F":" 'NR==line{printf $0}')
 fi
@@ -44,5 +48,6 @@ case $1 in
     start  )  start $2 ;;
     stop   )  stop  $2 ;;
     restart)  restart $2 ;;
+    status )  status $2 ;;
     *) printf -- "Usage: $0 {start|stop|restart|status}\n" ;;
 esac
