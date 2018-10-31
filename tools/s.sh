@@ -72,7 +72,7 @@ restart(){
 }
 
 status(){
-    ps -aux | grep $server_name
+    ps -xc | grep $server_name
 }
 
 
