@@ -1,7 +1,7 @@
 # Documentation: https://docs.brew.sh/Formula-Cookbook
 #                https://www.rubydoc.info/github/Homebrew/brew/master/Formula
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-class News < Formula
+class Todo < Formula
   desc "v.20181203.2248.ee994ab"
   homepage "https://github.com/cn100800/todo/releases"
   url "https://github.com/cn100800/todo/releases/download/v.20181203.2248.ee994ab/v.20181203.2248.ee994ab.tar.gz"
