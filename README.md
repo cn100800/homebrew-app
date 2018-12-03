@@ -1,4 +1,4 @@
-# homebrew-app
+# homebrew-tools
 
 ## 生成sha256
 
