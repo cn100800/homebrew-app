@@ -2,9 +2,9 @@
 #                https://www.rubydoc.info/github/Homebrew/brew/master/Formula
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 class Watermark < Formula
-  desc "v.20181205.0911.b5e02b2"
+  desc "v.20181205.0930.0a03524"
   homepage "https://github.com/cn100800/watermark/releases"
-  url "https://github.com/cn100800/watermark/releases/download/v.20181205.0911.b5e02b2/v.20181205.0911.b5e02b2.zip"
+  url "https://github.com/cn100800/watermark/releases/download/v.20181205.0930.0a03524/v.20181205.0930.0a03524.zip"
   # sha256 "69d29344184dbb38c45a820823fee7c1f316100d7d7ba15f99df0a02f89b9efe"
   # depends_on "cmake" => :build
 
