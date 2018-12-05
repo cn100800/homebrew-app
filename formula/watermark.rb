@@ -17,7 +17,7 @@ class Watermark < Formula
                           # "--prefix=#{prefix}"
     # system "cmake", ".", *std_cmake_args
 
-    bin.install "wartermark"
+    bin.install "watermark"
     # system "make", "install" # if this fails, try separate make/make install steps
   end
 
