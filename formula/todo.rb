@@ -4,7 +4,7 @@
 class Todo < Formula
   desc "v.20181203.2248.ee994ab"
   homepage "https://github.com/cn100800/todo/releases"
-  url "https://github.com/cn100800/todo/releases/download/v.20181203.2248.ee994ab/v.20181203.2248.ee994ab.tar.gz"
+  url "https://github.com/cn100800/todo/releases/download/v.20181203.2248.ee994ab/v.20181203.2248.ee994ab.zip"
   # sha256 "69d29344184dbb38c45a820823fee7c1f316100d7d7ba15f99df0a02f89b9efe"
   # depends_on "cmake" => :build
 

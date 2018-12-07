@@ -4,7 +4,7 @@
 class News < Formula
   desc "v.20181207.2322.ed4c850"
   homepage "https://github.com/cn100800/new/releases/latest"
-  url "https://github.com/cn100800/news/releases/download/v.20181207.2322.ed4c850/v.20181207.2322.ed4c850.tar.gz"
+  url "https://github.com/cn100800/news/releases/download/v.20181207.2322.ed4c850/v.20181207.2322.ed4c850.zip"
   # sha256 "69d29344184dbb38c45a820823fee7c1f316100d7d7ba15f99df0a02f89b9efe"
   # depends_on "cmake" => :build
 
