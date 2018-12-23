@@ -2,9 +2,9 @@
 #                https://www.rubydoc.info/github/Homebrew/brew/master/Formula
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 class Todo < Formula
-  desc "v.20181220.2349.58a934e"
+  desc "v.2018.1223.2008"
   homepage "https://github.com/cn100800/todo/releases"
-  url "https://github.com/cn100800/todo/releases/download/v.20181220.2349.58a934e/v.20181220.2349.58a934e.zip"
+  url "https://github.com/cn100800/todo/releases/download/v.2018.1223.2008/v.2018.1223.2008.zip"
   # sha256 "69d29344184dbb38c45a820823fee7c1f316100d7d7ba15f99df0a02f89b9efe"
   # depends_on "cmake" => :build
 
