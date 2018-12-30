@@ -2,9 +2,9 @@
 #                https://www.rubydoc.info/github/Homebrew/brew/master/Formula
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 class News < Formula
-  desc "v.20181207.2322.ed4c850"
+  desc "v.2018.1231.0134"
   homepage "https://github.com/cn100800/news/releases/latest"
-  url "https://github.com/cn100800/news/releases/download/v.20181207.2322.ed4c850/v.20181207.2322.ed4c850.zip"
+  url "https://github.com/cn100800/news/releases/download/v.2018.1231.0134/v.2018.1231.0134.zip"
   # sha256 "69d29344184dbb38c45a820823fee7c1f316100d7d7ba15f99df0a02f89b9efe"
   # depends_on "cmake" => :build
 
